@@ -19,3 +19,30 @@ def welcome():
     print("\n\n\n")
     Disp_star(60)
     x=input("\n\t\t\tPress enter key to continue....")
+
+def mainMenu():
+    while(1):
+        print("\n\n\n\n")
+        Disp_star(60)
+        print("\n\t\t\t MAIN MENU\n\n\n")
+        print("\t1. Customer")
+        print("\t2. Employee")
+        print("\t3. Exit")
+
+        ch=int(input("\n\n\tEnter your choice(1-3): "))
+        if ch==1:
+            print("Cust_Menu()")
+        elif ch==2:
+            print("Emp_Menu()")
+        elif ch==3:
+            txt="THANK YOU. VISIT AGAIN."
+            print("\n\n\n\n\t",end="")
+            for i in range(len(txt)):
+                print(txt[i], end=" ")
+                #time.sleep(0.1) 
+            break
+        else:
+            print("Invalid input. Try again!!!!!")
+
+welcome()
+mainMenu()
