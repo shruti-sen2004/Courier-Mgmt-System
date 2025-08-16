@@ -81,6 +81,86 @@ def Cust_Login():
     else:
         print("WRONG USER ID OR PASSWORD!!!")
 
+def Emp_Menu():
+    loginid="EMD0002"
+    psw="4321"
+    logid=input("Enter Employee ID: ")
+    pw=input("Enter Password: ")
+
+    if logid==loginid and pw==psw:
+        while(1):
+            print("\n\n\n\n")
+            Disp_star(60)
+            print("\n\t\t\t EMPLOYEE MENU\n\n\n")
+            print("\t1. Add customer details")
+            print("\t2. Add Dispatch details")
+            print("\t3. Return to main menu")
+
+            ch=int(input("\n\n\tEnter your choice(1-3): "))
+            if ch==1:
+                Cust_pack_details()
+            elif ch==2:
+                Dispatch_details()
+            elif ch==3:
+                break
+            else:
+                print("Invalid input. Try again!!!!!")
+    else:
+        print("WRONG USER ID OR PASSWORD!!!")
+
+def Cust_pack_details():
+    createTable ="""CREATE TABLE IF NOT EXISTS parcel(parcel_id int auto_increment PRIMARY KEY,p_date date NOT NULL,
+    Sname char(50) NOT NULL,saddr char(50) NOT NULL,smob char(15) NOT NULL,Rname char(30)
+    NOT NULL, raddr char(50) NOT NULL, rmob char(15),p_wt_kg smallint NOT NULL,amount smallint NOT NULL)"""
+    cursor.execute(createTable)
+
+    print('*' * 40)
+    print(" ENTER CUSTOMER DETAILS ")
+    print('*' * 40)
+    print("\n\n")
+    parcel_date=input("ENTER THE DATE: ")
+    sender_name=input("ENTER SENDER'S NAME:")
+    sender_address=input("ENTER SENDER'S ADDRESS:")
+    sender_mobile=input("ENTER SENDER'S MOBILE NO.:")
+    receiver_name=input("ENTER RECIEVER'S NAME:")
+    receiver_addr=input("ENTER RECIEVER'S ADDRESS:" )
+    receiver_mobile=input("ENTER RECIEVER'S MOBILE NO.: ")
+    parcel_wt=input("ENTER PARCEL WEIGHT IN kg: ")
+    amount=float(input("ENTER THE TOTAL AMOUNT="))
+    st="""INSERT INTO parcel(p_date,Sname,saddr,smob,Rname,raddr,rmob,p_wt_kg,amount)
+             VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}')""".format(parcel_date,sender_name,sender_address,sender_mobile,receiver_name,receiver_addr,receiver_mobile,parcel_wt,amount)
+    cursor.execute(st)
+    mycon.commit()
+    print("\n\n")
+    print("One record is added successfully !!!!!")
+    
+
+def Dispatch_details():
+    createTable ="""CREATE TABLE IF NOT EXISTS dispatch(parcel_id int auto_increment PRIMARY KEY,d_boy_id varchar(5),pin_deliv bigint,
+                    dsc_1 varchar(30),mot_1 char(10), dsc_2 varchar(30), mot_2 char(10),
+                    dsc_3 varchar(30), mot_3 char(10))"""
+    cursor.execute(createTable)
+
+    print('*' * 40)
+    print(" ENTER DISPATCH DETAILS ")
+    print('*' * 40)
+    print("\n\n")
+    delivery_boy_id=input("ENTER THE DELIVERY BOY ID: ")
+    delivery_pincode=input("ENTER DELIVERY PINCODE:")
+    dispatch_1=input("ENTER FIRST DISPATCH CENTRE:")
+    transport_1=input("ENTER FIRST MODE OF TRANSPORT:")
+    dispatch_2=input("ENTER SECOND DISPATCH CENTRE(if any):")
+    transport_2=input("ENTER SECOND MODE OF TRANSPORT(if any):")
+    dispatch_3=input("ENTER THIRD DISPATCH CENTRE(if any):")
+    transport_3=input("ENTER THIRD MODE OF TRANSPORT(if any):")
+    st="""INSERT INTO dispatch(d_boy_id,pin_deliv,dsc_1,mot_1,dsc_2,mot_2,dsc_3,mot_3)
+             VALUES ('{}','{}','{}','{}','{}','{}','{}','{}')""".format(delivery_boy_id,delivery_pincode,dispatch_1,transport_1,dispatch_2,transport_2,dispatch_3,transport_3)
+    cursor.execute(st)
+    mycon.commit()
+    print("\n\n")
+    print("One record is added successfully !!!!!")
+
+
 def mainMenu():
     while(1):
         print("\n\n\n\n")
