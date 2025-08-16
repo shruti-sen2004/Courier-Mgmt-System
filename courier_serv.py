@@ -102,6 +102,28 @@ def Prcl_Deliv_details(): # for fetching delivery details
         print("\n\n")
         print("***********************************************************************")
 
+def Bill(): # for displaying the bill for the customer 
+    print("******************************** FINAL BILL*************************")
+    print("\n\n")
+    c_id =input("ENTER YOUR PARCEL ID: ")
+    sql= "SELECT * FROM parcel WHERE parcel_id= %s;"
+    value= (c_id,)
+    data=cursor.execute(sql,value)
+    data=cursor.fetchone()       
+    if data != None:
+        print(f"PARCEL ID : {data[0]}")
+        print(f"DATE  : {data[1]}")
+        print(f"SENDER'S NAME : {data[2]}")
+        print(f"SENDER'S ADDRESS : {data[3]}")
+        print(f"SENDER'S MOBILE NO. : {data[4]}")
+        print(f"RECIEVER'S NAME : {data[5]}")
+        print(f"RECIEVER'S ADDRESS : {data[6]}")
+        print(f"RECIEVER'S MOBILE NO. : {data[7]}")
+        print(f"ENTER PARCEL WEIGHT IN kg : {data[8]}")
+        print(f"TOTAL AMOUNT= : {data[9]}")
+        print("\n\n")
+        print("******************************************************************")
+
 def Emp_Menu(): # employee login
     loginid="EMD0002"  # this is fixed by the company; allows only when fixed value is entered
     psw="4321"         # this is fixed by the company; allows only when fixed value is entered
