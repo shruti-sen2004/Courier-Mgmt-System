@@ -71,7 +71,7 @@ def Cust_Login(): # after sucessfull registration or direct login
         
             ch=int(input("\n\n\tEnter your choice(1-3): "))
             if ch==1:
-                print("delivery details")
+                Prcl_Deliv_details()
             elif ch==2:
                 print("print bill")
             elif ch==3:
@@ -80,6 +80,27 @@ def Cust_Login(): # after sucessfull registration or direct login
                 print("Invalid input. Try again!!!!!")
     else:
         print("WRONG USER ID OR PASSWORD!!!")
+
+def Prcl_Deliv_details(): # for fetching delivery details
+    print("***************************PARCEL DELIVERY DETAILS*************************")
+    print("\n\n")
+    c_id =input("ENTER YOUR PARCEL ID: ")
+    sql= "SELECT * FROM dispatch WHERE parcel_id= %s;"
+    value= (c_id,)
+    data=cursor.execute(sql,value)
+    data=cursor.fetchone()       
+    if data != None:
+        print(f"PARCEL ID : {data[0]}")
+        print(f"DELIVERY BOY ID  : {data[1]}")
+        print(f"DELIVERY PINCODE : {data[2]}")
+        print(f"DISPATCH CENTRE 1 : {data[3]}")
+        print(f"MODE OF TRANSPORT 1 : {data[4]}")
+        print(f"DISPATCH CENTRE 2(if any) : {data[5]}")
+        print(f"MODE OF TRANSPORT 2(if any) : {data[6]}")
+        print(f"DISPATCH CENTRE 3(if any) : {data[7]}")
+        print(f"MODE OF TRANSPORT 3 : {data[8]}")
+        print("\n\n")
+        print("***********************************************************************")
 
 def Emp_Menu(): # employee login
     loginid="EMD0002"  # this is fixed by the company; allows only when fixed value is entered
