@@ -15,8 +15,7 @@ def Disp_star(x):
 def welcome():
     Disp_star(60)
     print("\n\t WELCOME TO LIGHTYEAR COURIER EXPRESS SERVICE")
-    print("\n\n  Designed by:\n\t\t Shruti Sen")
-    print("\n\n\n")
+    print("\n\n Designed by: Shruti Sen \n\n")
     Disp_star(60)
     x=input("\n\t\t\tPress enter key to continue....")
 
@@ -24,7 +23,7 @@ def mainMenu():
     while(1):
         print("\n\n\n\n")
         Disp_star(60)
-        print("\n\t\t\t MAIN MENU\n\n\n")
+        print("\n\t\t\t MAIN MENU\n\n")
         print("\t1. Customer")
         print("\t2. Employee")
         print("\t3. Exit")
@@ -36,7 +35,7 @@ def mainMenu():
             print("Emp_Menu()")
         elif ch==3:
             txt="THANK YOU. VISIT AGAIN."
-            print("\n\n\n\n\t",end="")
+            print("\n\n\t",end="")
             for i in range(len(txt)):
                 print(txt[i], end=" ")
                 #time.sleep(0.1) 
