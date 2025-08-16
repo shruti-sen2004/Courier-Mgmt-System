@@ -3,23 +3,23 @@ import mysql.connector as ms
 
 mycon=ms.connect(host="localhost",user="root",password="",database="c_m_system")
 
-if mycon.is_connected():
+if mycon.is_connected(): # indicates connection was successfull 
     print("Successful")
 
 cursor=mycon.cursor()
 
-def Disp_star(x):
+def Disp_star(x): # displays x amount of starts
     for i in range(x):
         print("*", end="")
 
-def welcome():
+def welcome():  # welcome message
     Disp_star(60)
     print("\n\t WELCOME TO LIGHTYEAR COURIER EXPRESS SERVICE")
     print("\n\n Designed by: Shruti Sen \n\n")
     Disp_star(60)
     x=input("\n\t\t\tPress enter key to continue....")
 
-def Cust_Menu():
+def Cust_Menu(): # services that are available to customers 
     while(1):
         print("\n\n\n\n")
         Disp_star(60)
@@ -36,7 +36,7 @@ def Cust_Menu():
         elif ch==3:
             break
 
-def Cust_Register():
+def Cust_Register(): # initial registration of customer
     createTable ="""CREATE TABLE IF NOT EXISTS customer_account_details(Name char(50) NOT NULL,
     User_ID char(15) NOT NULL,Password char(15) NOT NULL)"""
     cursor.execute(createTable)
@@ -49,7 +49,7 @@ def Cust_Register():
     mycon.commit()
     print("You are registered.  ")
 
-def Cust_Login():
+def Cust_Login(): # after sucessfull registration or direct login
     print("Enter the details for login")
     u_id=input("Enter your User ID : ")
     psw=input("Enter the password :")
@@ -59,12 +59,12 @@ def Cust_Login():
     data=cursor.fetchone()      
 
     if data != None:
-        print("YOU HAVE BEEN SUCCESSFULLY LOGGED IN!!!!")
+        print("YOU HAVE BEEN SUCCESSFULLY LOGGED IN!!!!") 
         while True:
             print("\n\n\n\n")
             Disp_star(60)
             
-            print("\n\t\t\t PARCEL MENU\n\n\n")
+            print("\n\t\t\t PARCEL MENU\n\n\n") # services that customer can avail for after login
             print("\t1. Parcel Delivery Details")
             print("\t2. Bill")
             print("\t3. Return to Customer Menu")
@@ -81,9 +81,9 @@ def Cust_Login():
     else:
         print("WRONG USER ID OR PASSWORD!!!")
 
-def Emp_Menu():
-    loginid="EMD0002"
-    psw="4321"
+def Emp_Menu(): # employee login
+    loginid="EMD0002"  # this is fixed by the company; allows only when fixed value is entered
+    psw="4321"         # this is fixed by the company; allows only when fixed value is entered
     logid=input("Enter Employee ID: ")
     pw=input("Enter Password: ")
 
@@ -91,7 +91,7 @@ def Emp_Menu():
         while(1):
             print("\n\n\n\n")
             Disp_star(60)
-            print("\n\t\t\t EMPLOYEE MENU\n\n\n")
+            print("\n\t\t\t EMPLOYEE MENU\n\n\n") # tasks that employees can perform
             print("\t1. Add customer details")
             print("\t2. Add Dispatch details")
             print("\t3. Return to main menu")
@@ -108,7 +108,7 @@ def Emp_Menu():
     else:
         print("WRONG USER ID OR PASSWORD!!!")
 
-def Cust_pack_details():
+def Cust_pack_details(): # for employees to enter the customer info for shiping
     createTable ="""CREATE TABLE IF NOT EXISTS parcel(parcel_id int auto_increment PRIMARY KEY,p_date date NOT NULL,
     Sname char(50) NOT NULL,saddr char(50) NOT NULL,smob char(15) NOT NULL,Rname char(30)
     NOT NULL, raddr char(50) NOT NULL, rmob char(15),p_wt_kg smallint NOT NULL,amount smallint NOT NULL)"""
@@ -135,7 +135,7 @@ def Cust_pack_details():
     print("One record is added successfully !!!!!")
     
 
-def Dispatch_details():
+def Dispatch_details(): # for employees to enter for shiping of the package
     createTable ="""CREATE TABLE IF NOT EXISTS dispatch(parcel_id int auto_increment PRIMARY KEY,d_boy_id varchar(5),pin_deliv bigint,
                     dsc_1 varchar(30),mot_1 char(10), dsc_2 varchar(30), mot_2 char(10),
                     dsc_3 varchar(30), mot_3 char(10))"""
@@ -161,7 +161,7 @@ def Dispatch_details():
     print("One record is added successfully !!!!!")
 
 
-def mainMenu():
+def mainMenu(): # main method of the system
     while(1):
         print("\n\n\n\n")
         Disp_star(60)
@@ -174,7 +174,7 @@ def mainMenu():
         if ch==1:
             Cust_Menu()
         elif ch==2:
-            print("Emp_Menu()")
+            Emp_Menu()
         elif ch==3:
             txt="THANK YOU. VISIT AGAIN."
             print("\n\n\t",end="")
