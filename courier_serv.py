@@ -73,7 +73,7 @@ def Cust_Login(): # after sucessfull registration or direct login
             if ch==1:
                 Prcl_Deliv_details()
             elif ch==2:
-                print("print bill")
+                Bill()
             elif ch==3:
                 break
             else:
@@ -82,8 +82,8 @@ def Cust_Login(): # after sucessfull registration or direct login
         print("WRONG USER ID OR PASSWORD!!!")
 
 def Prcl_Deliv_details(): # for fetching delivery details
-    print("***************************PARCEL DELIVERY DETAILS*************************")
-    print("\n\n")
+    Disp_star(60)
+    print("\n\n\t\tPARCEL DELIVERY DETAILS\n\n")
     c_id =input("ENTER YOUR PARCEL ID: ")
     sql= "SELECT * FROM dispatch WHERE parcel_id= %s;"
     value= (c_id,)
@@ -100,11 +100,11 @@ def Prcl_Deliv_details(): # for fetching delivery details
         print(f"DISPATCH CENTRE 3(if any) : {data[7]}")
         print(f"MODE OF TRANSPORT 3 : {data[8]}")
         print("\n\n")
-        print("***********************************************************************")
+        Disp_star(60)
 
 def Bill(): # for displaying the bill for the customer 
-    print("******************************** FINAL BILL*************************")
-    print("\n\n")
+    Disp_star(60)
+    print("\n\n\t\tFINAL BILL\n\n")
     c_id =input("ENTER YOUR PARCEL ID: ")
     sql= "SELECT * FROM parcel WHERE parcel_id= %s;"
     value= (c_id,)
@@ -122,7 +122,7 @@ def Bill(): # for displaying the bill for the customer
         print(f"ENTER PARCEL WEIGHT IN kg : {data[8]}")
         print(f"TOTAL AMOUNT= : {data[9]}")
         print("\n\n")
-        print("******************************************************************")
+        Disp_star(60)
 
 def Emp_Menu(): # employee login
     loginid="EMD0002"  # this is fixed by the company; allows only when fixed value is entered
@@ -157,9 +157,9 @@ def Cust_pack_details(): # for employees to enter the customer info for shiping
     NOT NULL, raddr char(50) NOT NULL, rmob char(15),p_wt_kg smallint NOT NULL,amount smallint NOT NULL)"""
     cursor.execute(createTable)
 
-    print('*' * 40)
+    Disp_star(60)
     print(" ENTER CUSTOMER DETAILS ")
-    print('*' * 40)
+    Disp_star(60)
     print("\n\n")
     parcel_date=input("ENTER THE DATE: ")
     sender_name=input("ENTER SENDER'S NAME:")
@@ -184,9 +184,9 @@ def Dispatch_details(): # for employees to enter for shiping of the package
                     dsc_3 varchar(30), mot_3 char(10))"""
     cursor.execute(createTable)
 
-    print('*' * 40)
+    Disp_star(60)
     print(" ENTER DISPATCH DETAILS ")
-    print('*' * 40)
+    Disp_star(60)
     print("\n\n")
     delivery_boy_id=input("ENTER THE DELIVERY BOY ID: ")
     delivery_pincode=input("ENTER DELIVERY PINCODE:")
