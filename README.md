@@ -2,16 +2,16 @@
 A console-based application designed to manage and streamline courier operations. This system provides a simple, text-based interface for handling shipments, tracking packages, and managing user and admin accounts.
 
 ## Features
-- User and Admin Roles: The system supports two distinct user types: admin and user. Admins have full control over the system, while regular users can manage their own shipments.
-- Login & Authentication: Secure login and logout functionality to ensure data integrity and privacy.
-- Shipment Management: Create new shipments with details like sender, receiver, and destination.
-- Search Functionality: Easily search for shipments using criteria like parcel ID.
-- Data Persistence: Data is stored in a MySQL database, so it is not lost when the application is closed.
+- **User and Admin Roles:** The system supports two distinct user types: admin and user. Admins have full control over the system, while regular users can manage their own shipments.
+- **Login & Authentication:** Secure login and logout functionality to ensure data integrity and privacy.
+- **Shipment Management:** Create new shipments with details like sender, receiver, and destination.
+- **Search Functionality:** Easily search for shipments using criteria like parcel ID.
+- **Data Persistence:** Data is stored in a MySQL database, so it is not lost when the application is closed.
 
 ## Technologies Used
-- Language: Python
-- Database: MySQL
-- Libraries: mysql-connector-python
+- **Language:** Python
+- **Database:** MySQL
+- **Libraries:** mysql-connector-python
 
 ## Getting Started
 Follow these instructions to get a copy of the project up and running on your local machine.
@@ -24,6 +24,7 @@ You will need the following installed on your system:
 ### Installation
 - Clone the repository: `git clone https://github.com/shruti-sen2004/Courier-Mgmt-System.git`
 - Navigate into the project directory: `cd Courier-Mgmt-System`
+- Create a virtual environment (optional)
 - Install the required Python library: `pip install mysql-connector-python`
 - Set up the MySQL database:
   - Log in to your MySQL server.
@@ -32,7 +33,7 @@ You will need the following installed on your system:
 
 ### Update the database connection details:
 - Open the main.py file.
-- Modify the mysql.connector.connect() line with your MySQL username and password.
+- Modify the `mysql.connector.connect()` line with your MySQL username and password.
   ```bash
   mycon=ms.connect(host="localhost",user="your_username",password="your_password",database="c_m_system")
   ```
